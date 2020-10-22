@@ -31,7 +31,7 @@ Set-Location $currentLocation/$Project_Name;
 Write-Host "Initializing version control..."
 #if git is not found stop initializing repo, call Open in code function
 if ($null -eq (Get-Command "git.exe" -ErrorAction Stop)) {
-    Write-Host "Project scafolding is done, but Git could not be found ont this machine, stop adding the project to Version Control"
+    Write-Host "Project scafolding is done, but Git could not be found on this machine, stop adding the project to Version Control"
     Write-Host "Attempting to open project in Visual Studio Code..."
     Open_In_Code
 }
