@@ -1,5 +1,5 @@
 # DotNetProjectScaffolding
-Simple PowerShell Script used to scaffolding a dotnet core project and add it to git repository
+Simple PowerShell module used to scaffolding a dotnet core project and add it to git repository
 
 ## Intro
 This repo contians a simple PowerShell script which wil perform following steps:
@@ -11,10 +11,10 @@ This repo contians a simple PowerShell script which wil perform following steps:
 5. Open the project folder in VSCode
 
 ## Usage:
-There is not installation required, just put the script dotnet-project-scaffolding.ps1 and the dps-file folder into PowerShell Script folder then you ar all setup. 
+Setup is very simple, put the folder dotnet-project-scaffolding and everything in it into one of your PowerShell module (You can check with PowerShell Command $env:PSModulePath).
 
 To change gitignore file, go into folder dps-file, modify .gitignore file there.
 
-To use this script simple type dotnet-project-scaffolding.ps1 -Project_Type console -Project_Name HelloWorld -Language C#.
+To use this module simple type New-dotNetProject -Project_Type console -Project_Name HelloWorld -Language C#.
 
 Project_Type and the Language takes the same value as you would supply to dotnet command line tool. 
