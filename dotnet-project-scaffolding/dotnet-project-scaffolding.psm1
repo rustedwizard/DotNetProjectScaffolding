@@ -36,7 +36,8 @@ function New-dotNetProject {
         Write-Host "Attempting to open project in Visual Studio Code..."
         Open_In_Code
     }
-    $null = Copy-Item -Path $PSScriptRoot/dps-file/.gitignore -Destination $currentLocation/$Project_Name
+    $null = Copy-Item -Path $PSScriptRoot/gitignore -Destination $currentLocation/$Project_Name
+    $null = Rename-Item $currentLocation/$Project_Name/gitignore -NewName .gitignore
     $null = git init
     $null = git add .
     Write-Host "Commit for the first time..."
