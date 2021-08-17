@@ -62,9 +62,6 @@ function New-dotNetSolution{
     dotnet new sln
 
     $currentLocation = Get-Location
-    #Attempt to add to Version Control
-    Write-Host "Initializing Version Control..."
-    $null = Check-Git
     $null = Copy-Item -Path $PSScriptRoot/gitignore -Destination $currentLocation
     $null = Rename-Item $currentLocation/gitignore -NewName .gitignore
     While($true){
@@ -76,7 +73,9 @@ function New-dotNetSolution{
             if($plang -eq ""){
                 $plang = "C#"
             }
-            dotnet new $Project_Type --language $Language -n $Project_Name
+            WriteHost "Creating new project ..."
+            dotnet new $ptype --language $plang -n $pname
+            WriteHost "Hook the project with solution ..."
             dotnet sln add $Project_Name
             continue
         }
@@ -85,6 +84,8 @@ function New-dotNetSolution{
         }
         Write-Host "Please enter an valid answer [y/n]"
     }
+    Write-Host "Initializing Version Control ..."
+    $null = Check-Git
     $null = git init
     $null = git add . 
     Write-Host "Commit for the first time..."
