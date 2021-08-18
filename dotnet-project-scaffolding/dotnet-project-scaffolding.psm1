@@ -65,18 +65,18 @@ function New-dotNetSolution{
     $null = Copy-Item -Path $PSScriptRoot/gitignore -Destination $currentLocation
     $null = Rename-Item $currentLocation/gitignore -NewName .gitignore
     While($true){
-        $ans = Read-Host -Prompt "Do you need create new project [y/n]: "
+        $ans = Read-Host -Prompt "Do you need create new project [y/n]"
         if($ans -eq "y"){
-            $ptype = ReadHost -Prompt "Please enter project type: "
-            $pname = ReadHost -Prompt "Please enter project name: "
-            $plang = ReadHost -Prompt "Please enter programming language (default is C#):"
+            $ptype = Read-Host -Prompt "Please enter project type"
+            $pname = Read-Host -Prompt "Please enter project name"
+            $plang = Read-Host -Prompt "Please enter programming language (default is C#)"
             if($plang -eq ""){
                 $plang = "C#"
             }
-            WriteHost "Creating new project ..."
+            Write-Host "Creating new project ..."
             dotnet new $ptype --language $plang -n $pname
-            WriteHost "Hook the project with solution ..."
-            dotnet sln add $Project_Name
+            Write-Host "Hook the project with solution ..."
+            dotnet sln add $pname
             continue
         }
         if($ans -eq "n"){
